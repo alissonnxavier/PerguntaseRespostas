@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('head') %>
+
+    
+
+
+      
+        <body>
+
+        <div class="container mt-3 w-50">
+            <div class="card" id="formulario-pergunta">
+                <div class="card-header">
+                    <h3>Realizar pergunta</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/asked">
+                        <label>Título</label>
+                        <input type="text" placeholder="" class="form-control" name="title" value=" " required>
+                        <br><label>Descrição</label>
+                        <textarea placeholder="" class="form-control" name="description" required value=" "></textarea>
+                        <br>
+                        <button class="btn btn-primary">Perguntar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+       
+
+
+    </body>
+
+    <%- include ('footer') %>
+
+</html>

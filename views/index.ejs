@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include ('head') %>
+
+</head>
+
+<body>
+
+    <table class="table table-success table-striped w-50 container mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <% perguntas.forEach((pergunta)=>{ %>
+                    <th scope="row">
+                        <%= pergunta.id %>
+                    </th>
+                    <td>
+                        <%= pergunta.titulo %>
+                    </td>
+                    <td>
+                        <%= pergunta.descricao %>
+                    </td>
+            </tr>
+            <% }); %>
+
+
+
+        </tbody>
+
+    </table>
+
+
+
+
+
+</body>
+
+
+<%- include ('footer') %>
+
+</html>
