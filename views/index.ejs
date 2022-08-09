@@ -46,7 +46,7 @@
 
 
 
-    <table class="table table-success table-striped w-50 container mt-5 shadow">
+    <table class="table table-success table-striped w-50 container mt-5 shadow-lg">
         <thead>
             <tr>
                 <th scope="col">Pergunta</th>
@@ -56,12 +56,14 @@
         </thead>
         <tbody>
 
+           
+
             <tr>
                 <% perguntas.forEach((pergunta)=>{ %>
                    
                     
                     <td class="shadow">
-                        <%= pergunta.descricao %>
+                        <%= pergunta.ask %>
                     </td>
                     <td>
                         <button id=" <%= pergunta.id %>" type="button" class="btn btn-outline-success shadow"
@@ -81,7 +83,7 @@
                 <td>
                     <!-- Example Code -->
 
-                    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast fade show " role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-header">
                             <svg class="bd-placeholder-img rounded me-2" width="20" height="20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
@@ -89,9 +91,9 @@
                                 <rect width="100%" height="100%" fill="#007aff"></rect>
                             </svg>
 
-                            <strong class="me-auto">Resposta</strong>
+                            <strong class="me-auto bg-indigo-700" >Resposta</strong>
                             <small>11 mins ago</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <button type="button" class="btn-close " data-bs-dismiss="toast" aria-label="Close"></button>
                         </div>
                         <div class="toast-body">
                             <%= answer.answer %>
@@ -123,7 +125,7 @@
 
 
 </body>
-
+<script src="/js/sentAnswer.js"></script>
 
 <%- include ('footer') %>
 

@@ -1,18 +1,17 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const connection = require('./database/database');
-const AskModel = require('./database/ModelPergunta');
-const Awnser = require('./database/Resposta');
+
 const formidable = require('formidable');
 const conn = require('./database/db');
 const ans = require('./database/answer');
+const ask = require('./database/ask');
 
 
 
 
 
-connection.authenticate().then(() => { console.log('Conexao realizada') }).catch((e) => { console.log(e) });
+
 
 
 
@@ -25,22 +24,22 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
 
-    var newAnswer = {};
-    
-    let result = ans.getAnswer().then(result=>{
+    let answer = {}
 
-        newAnswer = result
-    });
-    
+    ans.getAnswer().then(result=>{
 
-    AskModel.findAll({raw: true, order:[['id','DESC']]}).then((perguntas) => {
+        answer = result
+    })
+
+  
+    ask.getAsk().then(result=>{
 
         res.render('index', {
-             perguntas: perguntas,
-             result: newAnswer
-             })
-    });
 
+            perguntas: result,
+            result: answer
+        })
+    })
     
 });
 
@@ -50,21 +49,29 @@ app.get('/ask', (req, res) => {
 
 })
 
-app.post('/asked', (req, res) => {
- 
+app.post('/ask', (req, res) => {
 
-    AskModel.create({
-        titulo: 'req.body.title',
-        descricao: 'req.body.description'
+    var form = new formidable.IncomingForm({
+
+        uploadDir: './upload',
+        keepExtensions: true
     });
 
-   var data = req.body.data ;
+    form.parse(req, (err, fields, files)=>{
 
-   res.send(console.log(data))
+        console.log(fields.question);
+        ask.saveAsk(fields.question).then(data =>{
 
+            res.send(data);
+            
+            
+        });
 
-
-})
+        
+              
+    })
+    
+});
 
 app.post('/saveanswer', (req, res)=>{
 

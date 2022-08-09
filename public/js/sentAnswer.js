@@ -75,6 +75,11 @@ class Answer{
         
     }
 
+    senAsk(){
+
+        
+    }
+
    
 }
 
